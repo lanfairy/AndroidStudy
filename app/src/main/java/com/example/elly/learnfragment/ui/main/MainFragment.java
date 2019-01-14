@@ -64,10 +64,12 @@ public class  MainFragment extends Fragment {
 
                     @Override
                     public void onAnimationEnd(Animation animation) {
-                        getFragmentManager().beginTransaction()
-                                .replace(R.id.container, new BlankFragment())
-                                .addToBackStack(null)
-                                .commit();
+                        if (getFragmentManager().beginTransaction() != null) {
+                            getFragmentManager().beginTransaction()
+                                    .replace(R.id.container, new BlankFragment())
+                                    .addToBackStack(null)
+                                    .commit();
+                        }
 
                     }
 
@@ -144,6 +146,26 @@ public class  MainFragment extends Fragment {
                 rotate.setDuration(1000);
 //                RotateAnimation rotate = (RotateAnimation)AnimationUtils.loadAnimation(getContext(), R.anim.rotate_one);
                 v.startAnimation(rotate);
+                rotate.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        getFragmentManager().beginTransaction()
+                                .replace(R.id.container, new AnimLayoutFragment())
+                                .addToBackStack(null)
+                                .commit();
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
+
             }
         });
 

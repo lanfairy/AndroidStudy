@@ -18,5 +18,6 @@
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="showTabActivity">启动Tab Activity</string>
     <string name="animtionSet">动画组合</string>
+    <string name="addButton">添加Button</string>
 
 </resources>
