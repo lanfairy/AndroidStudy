@@ -11,6 +11,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import com.example.elly.learnfragment.NavigationDrawer;
 import com.example.elly.learnfragment.R;
@@ -19,7 +22,6 @@ import com.example.elly.learnfragment.TabbedActivity;
 public class  MainFragment extends Fragment {
 
     private MainViewModel mViewModel;
-
     public static MainFragment newInstance() {
         return new MainFragment();
     }
@@ -43,10 +45,34 @@ public class  MainFragment extends Fragment {
         rootView.findViewById(R.id.showAnotherFragment).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction()
-                        .replace(R.id.container, new BlankFragment())
-                        .addToBackStack(null)
-                        .commit();
+                //alpha
+//                代码
+                /*AlphaAnimation fadeIn = new AlphaAnimation(0.0f, 1.0f);
+                fadeIn.setDuration(1000);*/
+//                xml方式
+                Animation fadeIn = AnimationUtils.loadAnimation(getContext(), R.anim.fade_in);
+                fadeIn.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        getFragmentManager().beginTransaction()
+                                .replace(R.id.container, new BlankFragment())
+                                .addToBackStack(null)
+                                .commit();
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
+                v.startAnimation(fadeIn);
+
+
 
             }
         });
