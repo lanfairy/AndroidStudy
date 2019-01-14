@@ -1,23 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".BlankFragment">
+    android:orientation="vertical"
+    android:id="@+id/backMainFragment"
+    >
 
     <!-- TODO: Update blank fragment layout -->
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/hello_blank_fragment" />
+
     <Button
-        android:id="@+id/backMainFragment"
+        android:id="@+id/backMainFragment1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/backMainFragment"
-        android:layout_marginTop="50dp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="20dp"
+        />
+    <Button
+        android:id="@+id/backMainFragment2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/backMainFragment"
+        android:layout_marginTop="20dp"
+        />
+    <Button
+        android:id="@+id/backMainFragment3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/backMainFragment"
+        android:layout_marginTop="20dp"
+        />
+    <Button
+        android:id="@+id/backMainFragment4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/backMainFragment"
+        android:layout_marginTop="20dp"
+        />
+    <Button
+        android:id="@+id/backMainFragment5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/backMainFragment"
+        android:layout_marginTop="20dp"
+        />
+    <Button
+        android:id="@+id/backMainFragment6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/backMainFragment"
+        android:layout_marginTop="20dp"
         />
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

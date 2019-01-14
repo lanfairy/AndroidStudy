@@ -9,6 +9,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.LayoutAnimationController;
+import android.view.animation.ScaleAnimation;
+import android.widget.LinearLayout;
 
 import com.example.elly.learnfragment.R;
 
@@ -23,15 +26,21 @@ public class BlankFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.v("0","BlankFragment onCreate");
-    }
+}
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         Log.v("0","BlankFragment onCreateView");
 
-        View rootView = inflater.inflate(R.layout.fragment_blank, container, false);
-        rootView.findViewById(R.id.backMainFragment).setOnClickListener(new View.OnClickListener() {
+        LinearLayout rootView = (LinearLayout) inflater.inflate(R.layout.fragment_blank, container, false);
+        ScaleAnimation scaleAnimation = new ScaleAnimation(0f, 1f, 0f, 1f);
+        scaleAnimation.setDuration(2000);
+        LayoutAnimationController lac = new LayoutAnimationController(scaleAnimation, 0.5f);
+        //LayoutAnimationController.ORDER_NORMAL
+        lac.setOrder(LayoutAnimationController.ORDER_RANDOM);
+        rootView.setLayoutAnimation(lac);
+    rootView.findViewById(R.id.backMainFragment).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getFragmentManager().popBackStack();
