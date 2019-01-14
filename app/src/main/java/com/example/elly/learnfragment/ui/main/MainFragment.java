@@ -14,7 +14,9 @@ import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.ScaleAnimation;
 
+import com.example.elly.learnfragment.MainActivity;
 import com.example.elly.learnfragment.NavigationDrawer;
 import com.example.elly.learnfragment.R;
 import com.example.elly.learnfragment.TabbedActivity;
@@ -41,7 +43,7 @@ public class  MainFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable final ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         Log.v("0","MainFragment onCreateView");
-        View rootView = inflater.inflate(R.layout.main_fragment, container, false);
+        final View rootView = inflater.inflate(R.layout.main_fragment, container, false);
         rootView.findViewById(R.id.showAnotherFragment).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,7 +81,28 @@ public class  MainFragment extends Fragment {
         rootView.findViewById(R.id.showDrawerActivity).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), NavigationDrawer.class));
+                //RELATIVE_TO_SELF 锚点位置相对自己 定位
+//                ScaleAnimation zoomOut = new ScaleAnimation(1.0f,1.5f,1.0f,1.5f,Animation.RELATIVE_TO_SELF,0.5f, Animation.INFINITE,0.5f);
+//                zoomOut.setDuration(1000);
+                ScaleAnimation zoomOut = (ScaleAnimation) AnimationUtils.loadAnimation(getContext(), R.anim.zoom_out);
+                v.startAnimation(zoomOut);
+                zoomOut.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        startActivity(new Intent(getActivity(), NavigationDrawer.class));
+
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
             }
         });
         rootView.findViewById(R.id.showTabActivity).setOnClickListener(new View.OnClickListener() {
