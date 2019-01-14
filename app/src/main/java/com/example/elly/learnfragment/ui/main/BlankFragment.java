@@ -34,12 +34,14 @@ public class BlankFragment extends Fragment {
         Log.v("0","BlankFragment onCreateView");
 
         LinearLayout rootView = (LinearLayout) inflater.inflate(R.layout.fragment_blank, container, false);
-        ScaleAnimation scaleAnimation = new ScaleAnimation(0f, 1f, 0f, 1f);
-        scaleAnimation.setDuration(2000);
-        LayoutAnimationController lac = new LayoutAnimationController(scaleAnimation, 0.5f);
+//        ScaleAnimation scaleAnimation = new ScaleAnimation(0f, 1f, 0f, 1f);
+//        scaleAnimation.setDuration(2000);
+//        LayoutAnimationController lac = new LayoutAnimationController(scaleAnimation, 0.5f);
         //LayoutAnimationController.ORDER_NORMAL
-        lac.setOrder(LayoutAnimationController.ORDER_RANDOM);
-        rootView.setLayoutAnimation(lac);
+        //可以给作何 View 添加布局动画
+//        lac.setOrder(LayoutAnimationController.ORDER_RANDOM);
+//        rootView.setLayoutAnimation(lac);
+
     rootView.findViewById(R.id.backMainFragment).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
