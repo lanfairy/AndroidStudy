@@ -1,5 +1,5 @@
 package com.example.elly.learnfragment.ui.main;
-
+//https://keeganlee.me/post/android/20151003
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
 import android.view.animation.RotateAnimation;
 import android.view.animation.ScaleAnimation;
@@ -67,6 +68,7 @@ public class  MainFragment extends Fragment {
                                 .replace(R.id.container, new BlankFragment())
                                 .addToBackStack(null)
                                 .commit();
+
                     }
 
                     @Override
@@ -142,6 +144,14 @@ public class  MainFragment extends Fragment {
                 rotate.setDuration(1000);
 //                RotateAnimation rotate = (RotateAnimation)AnimationUtils.loadAnimation(getContext(), R.anim.rotate_one);
                 v.startAnimation(rotate);
+            }
+        });
+
+        rootView.findViewById(R.id.animSet).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AnimationSet animationSet = (AnimationSet)AnimationUtils.loadAnimation(getContext(), R.anim.move_scale);
+                v.startAnimation(animationSet);
             }
         });
 
