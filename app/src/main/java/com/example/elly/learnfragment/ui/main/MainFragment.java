@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.RotateAnimation;
 import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 
@@ -109,7 +110,8 @@ public class  MainFragment extends Fragment {
         rootView.findViewById(R.id.showTabActivity).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                TranslateAnimation moveLtr = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0.f, Animation.RELATIVE_TO_SELF, 100.f, Animation.RELATIVE_TO_SELF, 0f, Animation.RELATIVE_TO_SELF, 0f);
+                //RELATIVE_TO_SELF
+//                TranslateAnimation moveLtr = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0.f, Animation.RELATIVE_TO_SELF, 1.f, Animation.RELATIVE_TO_SELF, 0f, Animation.RELATIVE_TO_SELF, 0f);
 //                TranslateAnimation moveLtr = new TranslateAnimation(0.f, 200f, 0f, 0f);
 //                moveLtr.setDuration(1000);
                 TranslateAnimation moveLtr = (TranslateAnimation) AnimationUtils.loadAnimation(getContext(), R.anim.move_left_to_right);
@@ -133,6 +135,16 @@ public class  MainFragment extends Fragment {
                 });
             }
         });
+        rootView.findViewById(R.id.message).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RotateAnimation rotate = new RotateAnimation(0f,360f,Animation.RELATIVE_TO_SELF, 0.5f,Animation.RELATIVE_TO_SELF, 0.5f);
+                rotate.setDuration(1000);
+//                RotateAnimation rotate = (RotateAnimation)AnimationUtils.loadAnimation(getContext(), R.anim.rotate_one);
+                v.startAnimation(rotate);
+            }
+        });
+
         return rootView;
     }
 
