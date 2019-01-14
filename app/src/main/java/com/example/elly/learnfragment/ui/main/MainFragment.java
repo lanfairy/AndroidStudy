@@ -15,6 +15,7 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.ScaleAnimation;
+import android.view.animation.TranslateAnimation;
 
 import com.example.elly.learnfragment.MainActivity;
 import com.example.elly.learnfragment.NavigationDrawer;
@@ -108,7 +109,28 @@ public class  MainFragment extends Fragment {
         rootView.findViewById(R.id.showTabActivity).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), TabbedActivity.class));
+//                TranslateAnimation moveLtr = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0.f, Animation.RELATIVE_TO_SELF, 100.f, Animation.RELATIVE_TO_SELF, 0f, Animation.RELATIVE_TO_SELF, 0f);
+//                TranslateAnimation moveLtr = new TranslateAnimation(0.f, 200f, 0f, 0f);
+//                moveLtr.setDuration(1000);
+                TranslateAnimation moveLtr = (TranslateAnimation) AnimationUtils.loadAnimation(getContext(), R.anim.move_left_to_right);
+                v.startAnimation(moveLtr);
+                moveLtr.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        startActivity(new Intent(getActivity(), TabbedActivity.class));
+
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
             }
         });
         return rootView;
