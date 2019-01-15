@@ -1,12 +1,16 @@
 package com.example.elly.learnfragment.ui.main;
 
+import android.animation.Animator;
+import android.animation.AnimatorInflater;
 import android.animation.LayoutTransition;
+import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +44,7 @@ private View.OnClickListener addBtnTvOnClick = new View.OnClickListener() {
     }
 };
 
+
     public static AnimLayoutFragment newInstance() {
         return new AnimLayoutFragment();
     }
@@ -56,6 +61,7 @@ private View.OnClickListener addBtnTvOnClick = new View.OnClickListener() {
         // Inflate the layout for this fragment
         rootView = (LinearLayout)inflater.inflate(R.layout.fragment_anim_layout, container, false);
         rootView.findViewById(R.id.addButtonTv).setOnClickListener(addBtnTvOnClick);
+
         LayoutTransition transition = new LayoutTransition();
         rootView.setLayoutTransition(transition);
         return rootView;

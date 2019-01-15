@@ -1,5 +1,7 @@
 package com.example.elly.learnfragment.ui.main;
 //https://keeganlee.me/post/android/20151003
+import android.animation.AnimatorInflater;
+import android.animation.ValueAnimator;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
@@ -25,7 +27,46 @@ import com.example.elly.learnfragment.R;
 import com.example.elly.learnfragment.TabbedActivity;
 
 public class  MainFragment extends Fragment {
+    private  ValueAnimator valueAnimator;
 
+    public ValueAnimator getValueAnimator() {
+        if (valueAnimator == null) {
+            valueAnimator = (ValueAnimator) AnimatorInflater.loadAnimator(getContext(), R.animator.value_animator);
+        }
+        return valueAnimator;
+    }
+
+    private View.OnClickListener onValueAnimator = new View.OnClickListener() {
+        @Override
+        public void onClick(final View v) {
+            // 获取屏幕宽度
+            final int maxWidth = getActivity().getWindowManager().getDefaultDisplay().getWidth();
+            Log.v("width","屏幕宽度: "+maxWidth);
+
+
+            Boolean test = getValueAnimator().isStarted();
+           if (getValueAnimator().isRunning()) {
+               getValueAnimator().cancel();
+               getValueAnimator().removeAllUpdateListeners();
+           }
+           else
+           {
+               getValueAnimator().addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+
+                   @Override
+                   public void onAnimationUpdate(ValueAnimator animation) {
+                       // 当前动画值，即为当前宽度比例值
+                       int currentValue = (int) animation.getAnimatedValue();
+                       // 根据比例更改目标view的宽度
+                       v.getLayoutParams().width = maxWidth * currentValue / 100;
+                       v.requestLayout();
+                   }
+               });
+               getValueAnimator().start();
+           }
+
+        }
+    };
     private MainViewModel mViewModel;
     public static MainFragment newInstance() {
         return new MainFragment();
@@ -176,7 +217,7 @@ public class  MainFragment extends Fragment {
                 v.startAnimation(animationSet);
             }
         });
-
+        rootView.findViewById(R.id.onValueAnimator).setOnClickListener(onValueAnimator);
         return rootView;
     }
 

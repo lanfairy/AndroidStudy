@@ -59,5 +59,15 @@
         app:layout_constraintTop_toBottomOf="@+id/message"
 
         />
+    <Button
+        android:id="@+id/onValueAnimator"
+        android:text="value Animator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/animSet"
+        android:background="@drawable/bg_btn_normal"
+
+         />
 
 </android.support.constraint.ConstraintLayout>
