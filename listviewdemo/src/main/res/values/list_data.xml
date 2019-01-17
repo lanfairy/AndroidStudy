@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="datalist">
+        <item>北京</item>
+        <item>上海</item>
+        <item>广州</item>
+        <item>贵州</item>
+        <item>郑州</item>
+        <item>东京</item>
+        <item>汉城</item>
+    </string-array>
+</resources>

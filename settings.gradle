@@ -1,1 +1,1 @@
-include ':app', ':baselayoutdemo', ':recyclerviewstudy'
+include ':app', ':baselayoutdemo', ':recyclerviewstudy', ':listviewdemo'
