@@ -6,15 +6,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.androidsummary.R;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
@@ -39,6 +43,7 @@ public class AsyncTaskAty extends AppCompatActivity {
             protected String doInBackground(String... strings) {
                 try {
                     URL url = new URL(strings[0]);
+                    //http 的get 请求
                    URLConnection connection = url.openConnection();
                    long total = connection.getContentLength();
                   InputStream inputStream = connection.getInputStream();
@@ -90,5 +95,55 @@ public class AsyncTaskAty extends AppCompatActivity {
                 super.onCancelled();
             }
         }.execute(url);
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    private void readURLPOST(String url){
+       new  AsyncTask<String, Void, String>(){
+
+           @Override
+           protected String doInBackground(String... strings) {
+               try {
+                   URL url = new URL(strings[0]);
+                  HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                  //允许向服务器传递数据
+                  connection.setDoOutput(true);
+                  //默认 就是 开启的  可以省略
+                  connection.setDoInput(true);
+                  //请求方式 设置为POST 默认为GET
+                  connection.setRequestMethod("POST");
+
+
+                   OutputStream os = connection.getOutputStream();
+                   OutputStreamWriter osw = new OutputStreamWriter(os);
+                   BufferedWriter bw = new BufferedWriter(osw);
+                   bw.write("要POST的参数");
+                   bw.flush();
+
+                   InputStream is = connection.getInputStream();
+                  InputStreamReader isr = new InputStreamReader(is);
+                  BufferedReader br = new BufferedReader(isr);
+                  String line;
+                  StringBuilder builder = new StringBuilder();
+                  while ((line=br.readLine())!=null) {
+                      builder.append(line);
+                  }
+                  br.close();
+                  isr.close();
+                  is.close();
+                  return builder.toString();
+               } catch (MalformedURLException e) {
+                   e.printStackTrace();
+               } catch (IOException e) {
+                   e.printStackTrace();
+               }
+               return null;
+           }
+
+           @Override
+           protected void onPostExecute(String s) {
+               super.onPostExecute(s);
+           }
+       }.execute(url);
     }
 }
