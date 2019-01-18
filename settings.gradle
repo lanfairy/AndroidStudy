@@ -1,1 +1,1 @@
-include ':app', ':baselayoutdemo', ':recyclerviewstudy', ':listviewdemo'
+include ':app', ':baselayoutdemo', ':recyclerviewstudy', ':listviewdemo', ':androidsummary'
