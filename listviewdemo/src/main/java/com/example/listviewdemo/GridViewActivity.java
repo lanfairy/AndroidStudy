@@ -39,6 +39,8 @@ public class GridViewActivity extends AppCompatActivity {
             while ((line = br.readLine()) != null){
                 builder.append(line);
             }
+            br.close();
+            isr.close();
             JSONObject rootJson = new JSONObject(builder.toString());
             JSONArray languages = rootJson.getJSONArray("languages");
             return  languages;
