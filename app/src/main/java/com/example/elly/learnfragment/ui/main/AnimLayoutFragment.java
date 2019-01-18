@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.elly.learnfragment.R;
 
@@ -34,6 +35,7 @@ public class AnimLayoutFragment extends Fragment {
         }
     };
 private View.OnClickListener addBtnTvOnClick = new View.OnClickListener() {
+
     @SuppressLint("SetTextI18n")
     @Override
     public void onClick(View v) {
@@ -60,7 +62,12 @@ private View.OnClickListener addBtnTvOnClick = new View.OnClickListener() {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         rootView = (LinearLayout)inflater.inflate(R.layout.fragment_anim_layout, container, false);
-        rootView.findViewById(R.id.addButtonTv).setOnClickListener(addBtnTvOnClick);
+       TextView tv = rootView.findViewById(R.id.addButtonTv);
+        if (getArguments() !=null){
+            String arg = (String) getArguments().get("name");
+            tv.setText(tv.getText() + " " + arg);
+        }
+       tv.setOnClickListener(addBtnTvOnClick);
 
         LayoutTransition transition = new LayoutTransition();
         rootView.setLayoutTransition(transition);

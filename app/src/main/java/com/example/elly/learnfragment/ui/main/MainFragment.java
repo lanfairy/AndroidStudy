@@ -195,8 +195,12 @@ public class  MainFragment extends Fragment {
 
                     @Override
                     public void onAnimationEnd(Animation animation) {
+                      AnimLayoutFragment fragment =  new AnimLayoutFragment();
+                      Bundle bundle = new Bundle();
+                      bundle.putString("name", "我是fragment传参");
+                      fragment.setArguments(bundle);
                         getFragmentManager().beginTransaction()
-                                .replace(R.id.container, new AnimLayoutFragment())
+                                .replace(R.id.container, fragment)
                                 .addToBackStack(null)
                                 .commit();
                     }
