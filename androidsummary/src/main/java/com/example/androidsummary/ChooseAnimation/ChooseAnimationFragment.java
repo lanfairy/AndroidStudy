@@ -79,12 +79,13 @@ public class ChooseAnimationFragment extends Fragment {
             recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
                 @Override
                 public boolean onInterceptTouchEvent(@NonNull RecyclerView recyclerView, @NonNull MotionEvent motionEvent) {
-                    if (motionEvent==null)return false;
-                    View view = recyclerView.findChildViewUnder(motionEvent.getX(), motionEvent.getY());
-                    if (view!=null){
-                        ChooseAnimationRecyclerViewAdapter.ViewHolder holder = (ChooseAnimationRecyclerViewAdapter.ViewHolder) recyclerView.getChildViewHolder(view);
-                        boolean isTouch = holder.isTouchInTextView(motionEvent.getX(),motionEvent.getY());
-                        recyclerView.requestDisallowInterceptTouchEvent(isTouch);
+                    if (motionEvent!=null) {
+                        View view = recyclerView.findChildViewUnder(motionEvent.getX(), motionEvent.getY());
+                        if (view != null) {
+                            ChooseAnimationRecyclerViewAdapter.ViewHolder holder = (ChooseAnimationRecyclerViewAdapter.ViewHolder) recyclerView.getChildViewHolder(view);
+                            boolean isTouch = holder.isTouchInTextView(motionEvent.getX(), motionEvent.getY());
+                            recyclerView.requestDisallowInterceptTouchEvent(isTouch);
+                        }
                     }
                     return false;
                 }

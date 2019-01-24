@@ -65,15 +65,15 @@ public class ChooseAnimationRecyclerViewAdapter extends RecyclerView.Adapter<Cho
         public final View mView;
         public final TextView mIdView;
         public final ImageView mIconImg;
-//        public final ScrollView mScrollView;
+        public final ScrollView mScrollView;
         public DummyItem mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-//            mScrollView = (ScrollView)view.findViewById(R.id.scrollView);
+            mScrollView = (ScrollView)view.findViewById(R.id.scrollView);
             mIdView = (TextView) view.findViewById(R.id.textView);
-            mIdView.setMovementMethod(ScrollingMovementMethod.getInstance());
+//            mIdView.setMovementMethod(ScrollingMovementMethod.getInstance());
             mIconImg = (ImageView) view.findViewById(R.id.iconImg);
         }
 //        public boolean isTouchInTextView(float x,float y)
