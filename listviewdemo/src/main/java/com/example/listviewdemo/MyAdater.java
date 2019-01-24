@@ -1,6 +1,7 @@
 package com.example.listviewdemo;
 
 import android.content.Context;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,6 +42,7 @@ class MyAdater extends BaseAdapter {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.item_list, null);
             holder = new Holder();
             holder.textView = convertView.findViewById(R.id.title);
+            holder.textView.setMovementMethod(ScrollingMovementMethod.getInstance());
             convertView.setTag(holder);
             Log.i("TAG", "创建对象: "+convertView);
         }else{

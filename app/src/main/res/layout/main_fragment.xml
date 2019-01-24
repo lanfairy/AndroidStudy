@@ -69,5 +69,20 @@
         android:background="@drawable/bg_btn_normal"
 
          />
+    <!--<ScrollView-->
+        <!--android:layout_width="match_parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@id/onValueAnimator"-->
+        <!--android:layout_height="200dp">-->
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            app:layout_constraintTop_toBottomOf="@id/onValueAnimator"
+            android:scrollbars="vertical"
+            android:text="Destroying surface Surface(name=Starting com.example.elly.learnfragment) called by com.android.server.wm.WindowStateAnimator.destroySurface:2016 com.android.server.wm.WindowStateAnimator.destroySurfaceLocked:882 com.android.server.wm.WindowState.destroyOrSaveSurface:2100 com.android.server.wm.AppWindowToken.destroySurfaces:363 com.android.server.wm.WindowStateAnimator.finishExit:565 com.android.server.wm.WindowStateAnimator.stepAnimationLocked:491 com.android.server.wm.WindowAnimator.updateWindowsLocked:303 com.android.server.wm.WindowAnimator.animateLocked:704 "
+            />
+    <!--</ScrollView>-->
 </android.support.constraint.ConstraintLayout>

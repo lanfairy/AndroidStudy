@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,7 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.RotateAnimation;
 import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
+import android.widget.TextView;
 
 import com.example.elly.learnfragment.MainActivity;
 import com.example.elly.learnfragment.NavigationDrawer;
@@ -222,6 +224,9 @@ public class  MainFragment extends Fragment {
             }
         });
         rootView.findViewById(R.id.onValueAnimator).setOnClickListener(onValueAnimator);
+
+
+        ((TextView)rootView.findViewById(R.id.textView)).setMovementMethod(ScrollingMovementMethod.getInstance());
         return rootView;
     }
 
